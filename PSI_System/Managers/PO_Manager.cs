@@ -185,7 +185,7 @@ namespace PSI_System.Managers
         {
             string dbQuery =
                 $@"
-                    SELECT ID, Name, UnitPrice
+                    SELECT *
                     FROM Products
                   ";
 
@@ -199,8 +199,10 @@ namespace PSI_System.Managers
             {
                 ProductModel model = new ProductModel();
                 model.ID = (string)dr["ID"];
+                model.Category = (string)dr["Category"];
                 model.Name = (string)dr["Name"];
                 model.UnitPrice = (decimal)dr["UnitPrice"];
+
 
                 list.Add(model);
             }

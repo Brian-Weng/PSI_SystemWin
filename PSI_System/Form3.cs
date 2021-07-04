@@ -18,8 +18,6 @@ namespace PSI_System
             InitializeComponent();
         }
 
-        public string UserName = string.Empty;
-
         private void Form3_Load(object sender, EventArgs e)
         {
             this.lblUserName.Text = "Hi! " + Form1.UserName;
