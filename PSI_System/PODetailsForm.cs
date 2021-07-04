@@ -22,7 +22,6 @@ namespace PSI_System
             this.dgvPODetail.AutoGenerateColumns = false;
         }
 
-        public string UserName = string.Empty;
         public string Pid = string.Empty;
         public string ArrivalDate = string.Empty;
         private PO_Manager _manager = new PO_Manager();
@@ -149,7 +148,7 @@ namespace PSI_System
                 _model.ArrivalTime = this.dtpArrivalDate.Value;
                 _model.Total = decimal.Parse(this.txtTotal.Text);
                 _model.CreateDate = DateTime.Now;
-                _model.Creator = UserName;
+                _model.Creator = Form1.UserName;
 
                 _manager.CreatePO(_model, dt);
 
@@ -163,7 +162,7 @@ namespace PSI_System
                 _model.ArrivalTime = this.dtpArrivalDate.Value;
                 _model.Total = decimal.Parse(this.txtTotal.Text);
                 _model.ModifyDate = DateTime.Now;
-                _model.Modifier = UserName;
+                _model.Modifier = Form1.UserName;
 
                 _manager.UpdatePO(_model, dt);
 

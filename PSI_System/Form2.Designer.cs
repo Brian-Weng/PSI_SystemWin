@@ -116,7 +116,7 @@ namespace PSI_System
             this.PID.HeaderText = "單據編號";
             this.PID.MinimumWidth = 6;
             this.PID.Name = "PID";
-            this.PID.Width = 96;
+            this.PID.Width = 75;
             // 
             // Items
             // 
@@ -125,7 +125,7 @@ namespace PSI_System
             this.Items.HeaderText = "貨物種類";
             this.Items.MinimumWidth = 6;
             this.Items.Name = "Items";
-            this.Items.Width = 96;
+            this.Items.Width = 75;
             // 
             // QTY
             // 
@@ -134,7 +134,7 @@ namespace PSI_System
             this.QTY.HeaderText = "進貨數量";
             this.QTY.MinimumWidth = 6;
             this.QTY.Name = "QTY";
-            this.QTY.Width = 96;
+            this.QTY.Width = 75;
             // 
             // ArrivalTime
             // 
@@ -271,6 +271,7 @@ namespace PSI_System
             this.Controls.Add(this.pictureBox1);
             this.Name = "Form2";
             this.Text = "Form2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

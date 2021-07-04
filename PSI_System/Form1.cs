@@ -19,7 +19,7 @@ namespace PSI_System
             InitializeComponent();
         }
 
-        public string UserName = string.Empty;
+        public static string UserName = string.Empty;
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -34,8 +34,6 @@ namespace PSI_System
             {
                 UserName = model.Name;
                 Form2 frm2 = new Form2();
-                frm2.Main = this;
-                //frm2.UserName = this.UserName;
                 frm2.Show();
                 this.Hide();
             }
@@ -60,7 +58,7 @@ namespace PSI_System
             var result = MessageBox.Show("你確定要離開嗎?", "是否離開" ,MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                Application.Exit();
+                Environment.Exit(Environment.ExitCode);
             }
             else
             {

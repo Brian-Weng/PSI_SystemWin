@@ -18,13 +18,11 @@ namespace PSI_System
             InitializeComponent();
         }
 
-        public Form1 Main = null;
         frmPODetails poFrm = new frmPODetails();
-        public string UserName = string.Empty;
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            this.lblUserName.Text = "Hi! " + this.UserName;
+            this.lblUserName.Text = "Hi! " + Form1.UserName;
 
             LoadGridView();
 
@@ -32,8 +30,6 @@ namespace PSI_System
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-
-            poFrm.UserName = this.Main.UserName;
             poFrm.Pid = string.Empty;
             poFrm.ShowDialog();
 
@@ -47,7 +43,6 @@ namespace PSI_System
             string pid = this.dgvPO.CurrentRow.Cells["PID"].Value.ToString();
             string arrivalDate = this.dgvPO.CurrentRow.Cells["ArrivalTime"].Value.ToString();
 
-            poFrm.UserName = this.Main.UserName;
             poFrm.Pid = pid;
             poFrm.ArrivalDate = arrivalDate;
             poFrm.ShowDialog();
@@ -63,7 +58,7 @@ namespace PSI_System
             var result = MessageBox.Show($"你確定要刪除進貨單 {pid} 嗎?", "是否刪除", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                string currentUser = this.Main.UserName;
+                string currentUser = Form1.UserName;
                 var manager = new PO_Manager();
                 manager.DeletePO(pid, currentUser);
 
@@ -91,6 +86,7 @@ namespace PSI_System
             this.dgvPO.DataSource = list;
         }
 
+        
         private void btnPdtFrom_Click(object sender, EventArgs e)
         {
             if (Application.OpenForms.OfType<Form3>().Any())
@@ -100,10 +96,29 @@ namespace PSI_System
             else
             {
                 Form3 frm3 = new Form3();
-                frm3.UserName = this.Main.UserName;
                 frm3.Show();
             }
             
+        }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Application.OpenForms.Count == 2)
+            {
+                var result = MessageBox.Show($"已無其他表單，將關閉程式，您確定嗎?", "是否刪除", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    Environment.Exit(Environment.ExitCode);
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+            else
+            {
+                e.Cancel = false;
+            }
         }
     }
 }

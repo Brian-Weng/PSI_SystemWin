@@ -22,7 +22,7 @@ namespace PSI_System
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            this.lblUserName.Text = UserName;
+            this.lblUserName.Text = "Hi! " + Form1.UserName;
             LoadGridView();
         }
 
@@ -35,7 +35,6 @@ namespace PSI_System
             else
             {
                 Form2 frm2 = new Form2();
-                //frm2.UserName = this.UserName;
                 frm2.Show();
             }
         }
@@ -46,6 +45,28 @@ namespace PSI_System
             var list = manager.GetProducts();
             this.dgvProducts.ReadOnly = true;
             this.dgvProducts.DataSource = list;
+        }
+
+        private void Form3_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            if(Application.OpenForms.Count == 2)
+            {
+                var result = MessageBox.Show($"已無其他表單，將關閉程式，您確定嗎?", "是否刪除", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    Environment.Exit(Environment.ExitCode);
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+            else
+            {
+                e.Cancel = false;
+            }
+
         }
     }
 }
