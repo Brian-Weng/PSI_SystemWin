@@ -33,6 +33,12 @@ namespace PSI_System
             this.btnPdtFrom = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.dgvPO = new System.Windows.Forms.DataGridView();
+            this.btnInsert = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.lblUserName = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Items = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QTY = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,12 +48,6 @@ namespace PSI_System
             this.Creator = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModifyDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Modifier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnInsert = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.lblUserName = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -108,87 +108,6 @@ namespace PSI_System
             this.dgvPO.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPO.Size = new System.Drawing.Size(932, 289);
             this.dgvPO.TabIndex = 4;
-            // 
-            // PID
-            // 
-            this.PID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.PID.DataPropertyName = "PID";
-            this.PID.HeaderText = "單據編號";
-            this.PID.MinimumWidth = 6;
-            this.PID.Name = "PID";
-            this.PID.Width = 75;
-            // 
-            // Items
-            // 
-            this.Items.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Items.DataPropertyName = "Items";
-            this.Items.HeaderText = "貨物種類";
-            this.Items.MinimumWidth = 6;
-            this.Items.Name = "Items";
-            this.Items.Width = 75;
-            // 
-            // QTY
-            // 
-            this.QTY.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.QTY.DataPropertyName = "QTY";
-            this.QTY.HeaderText = "進貨數量";
-            this.QTY.MinimumWidth = 6;
-            this.QTY.Name = "QTY";
-            this.QTY.Width = 75;
-            // 
-            // ArrivalTime
-            // 
-            this.ArrivalTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ArrivalTime.DataPropertyName = "ArrivalTime";
-            this.ArrivalTime.HeaderText = "預計進貨時間";
-            this.ArrivalTime.MinimumWidth = 6;
-            this.ArrivalTime.Name = "ArrivalTime";
-            this.ArrivalTime.Width = 150;
-            // 
-            // Total
-            // 
-            this.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Total.DataPropertyName = "Total";
-            this.Total.HeaderText = "進貨金額";
-            this.Total.MinimumWidth = 6;
-            this.Total.Name = "Total";
-            this.Total.Width = 96;
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "建立時間";
-            this.CreateDate.MinimumWidth = 6;
-            this.CreateDate.Name = "CreateDate";
-            this.CreateDate.Width = 150;
-            // 
-            // Creator
-            // 
-            this.Creator.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Creator.DataPropertyName = "Creator";
-            this.Creator.HeaderText = "建立者";
-            this.Creator.MinimumWidth = 6;
-            this.Creator.Name = "Creator";
-            this.Creator.Width = 96;
-            // 
-            // ModifyDate
-            // 
-            this.ModifyDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ModifyDate.DataPropertyName = "ModifyDate";
-            this.ModifyDate.HeaderText = "修改時間";
-            this.ModifyDate.MinimumWidth = 6;
-            this.ModifyDate.Name = "ModifyDate";
-            this.ModifyDate.Width = 96;
-            // 
-            // Modifier
-            // 
-            this.Modifier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Modifier.DataPropertyName = "Modifier";
-            this.Modifier.HeaderText = "修改者";
-            this.Modifier.MinimumWidth = 6;
-            this.Modifier.Name = "Modifier";
-            this.Modifier.Width = 96;
             // 
             // btnInsert
             // 
@@ -253,6 +172,87 @@ namespace PSI_System
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // PID
+            // 
+            this.PID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.PID.DataPropertyName = "PID";
+            this.PID.HeaderText = "單據編號";
+            this.PID.MinimumWidth = 6;
+            this.PID.Name = "PID";
+            this.PID.Width = 96;
+            // 
+            // Items
+            // 
+            this.Items.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Items.DataPropertyName = "Items";
+            this.Items.HeaderText = "貨物種類";
+            this.Items.MinimumWidth = 6;
+            this.Items.Name = "Items";
+            this.Items.Width = 96;
+            // 
+            // QTY
+            // 
+            this.QTY.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.QTY.DataPropertyName = "QTY";
+            this.QTY.HeaderText = "進貨數量";
+            this.QTY.MinimumWidth = 6;
+            this.QTY.Name = "QTY";
+            this.QTY.Width = 96;
+            // 
+            // ArrivalTime
+            // 
+            this.ArrivalTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ArrivalTime.DataPropertyName = "ArrivalTime";
+            this.ArrivalTime.HeaderText = "預計進貨時間";
+            this.ArrivalTime.MinimumWidth = 6;
+            this.ArrivalTime.Name = "ArrivalTime";
+            this.ArrivalTime.Width = 150;
+            // 
+            // Total
+            // 
+            this.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Total.DataPropertyName = "Total";
+            this.Total.HeaderText = "進貨金額";
+            this.Total.MinimumWidth = 6;
+            this.Total.Name = "Total";
+            this.Total.Width = 96;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CreateDate.DataPropertyName = "CreateDate";
+            this.CreateDate.HeaderText = "建立時間";
+            this.CreateDate.MinimumWidth = 6;
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.Width = 150;
+            // 
+            // Creator
+            // 
+            this.Creator.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Creator.DataPropertyName = "Creator";
+            this.Creator.HeaderText = "建立者";
+            this.Creator.MinimumWidth = 6;
+            this.Creator.Name = "Creator";
+            this.Creator.Width = 96;
+            // 
+            // ModifyDate
+            // 
+            this.ModifyDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ModifyDate.DataPropertyName = "ModifyDate";
+            this.ModifyDate.HeaderText = "修改時間";
+            this.ModifyDate.MinimumWidth = 6;
+            this.ModifyDate.Name = "ModifyDate";
+            this.ModifyDate.Width = 96;
+            // 
+            // Modifier
+            // 
+            this.Modifier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Modifier.DataPropertyName = "Modifier";
+            this.Modifier.HeaderText = "修改者";
+            this.Modifier.MinimumWidth = 6;
+            this.Modifier.Name = "Modifier";
+            this.Modifier.Width = 96;
             // 
             // Form2
             // 

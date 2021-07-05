@@ -112,6 +112,7 @@ namespace PSI_System.Managers
                     SELECT PID, Items, QTY, ArrivalTime, Total, CreateDate, Creator, ModifyDate, Modifier
                     FROM PurchaseOrders
                     WHERE Deleter IS NULL
+                    ORDER BY PID DESC
                   ";
 
             List<SqlParameter> dbParameters = new List<SqlParameter>();

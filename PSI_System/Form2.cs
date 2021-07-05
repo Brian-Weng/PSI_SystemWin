@@ -1,12 +1,6 @@
 ﻿using PSI_System.Managers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PSI_System
@@ -18,14 +12,25 @@ namespace PSI_System
             InitializeComponent();
         }
 
+        //讀取進貨單明細
+        private void LoadGridView()
+        {
+            var manager = new PO_Manager();
+            var list = manager.ReadPOs();
+            this.dgvPO.AutoGenerateColumns = false;
+            this.dgvPO.ReadOnly = true;
+            this.dgvPO.DataSource = list;
+        }
+
+        //建立進貨單明細Form表單的物件
         frmPODetails poFrm = new frmPODetails();
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            //使用者名稱為當前登錄者名稱
             this.lblUserName.Text = "Hi! " + Form1.UserName;
 
             LoadGridView();
-
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -76,16 +81,6 @@ namespace PSI_System
             CrystalReportForm report = new CrystalReportForm();
             report.Show();
         }
-
-        private void LoadGridView()
-        {
-            var manager = new PO_Manager();
-            var list = manager.ReadPOs();
-            this.dgvPO.AutoGenerateColumns = false;
-            this.dgvPO.ReadOnly = true;
-            this.dgvPO.DataSource = list;
-        }
-
         
         private void btnPdtFrom_Click(object sender, EventArgs e)
         {
