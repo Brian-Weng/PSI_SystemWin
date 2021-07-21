@@ -1,13 +1,7 @@
 ﻿using PSI_System.Managers;
 using PSI_System.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PSI_System
@@ -23,11 +17,12 @@ namespace PSI_System
         }
 
         public string Pid = string.Empty;
-        public string ArrivalDate = string.Empty;
+        //public string ArrivalDate = string.Empty;
         private PO_Manager _manager = new PO_Manager();
         private PO_Model _model = null;
         private void PODetailsForm_Load(object sender, EventArgs e)
         {
+            //Pid是空值為新增模式，否則為修改模式
             if (string.IsNullOrEmpty(Pid))
             {
                 _model = new PO_Model();
@@ -54,16 +49,10 @@ namespace PSI_System
 
         }
 
+        //檢查數量輸入值並計算小計
         private void dgvPODetail_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = this.dgvPODetail.Rows[e.RowIndex];
-            //0=>數量 1=>小計 2=>編號 3=>名稱 4=>單價
-
-            var aa = row.Cells[0].Value;
-            var bb = row.Cells[1].Value;
-            var cc = row.Cells[2].Value;
-            var dd = row.Cells[3].Value;
-            var ee = row.Cells[4].Value;
 
             if (row.Cells[3].Value == null)
             {
@@ -77,20 +66,13 @@ namespace PSI_System
             if (!isNumber || qty < 0 || qty > 300)
             {
                 MessageBox.Show("請輸入數字，範圍請在0~300之間");
-                row.Cells[0].Value = null;
-                row.Cells[1].Value = null;
+                row.Cells[3].Value = null;
+                row.Cells[4].Value = null;
                 return;
             }
             
             row.Cells[4].Value = qty * Convert.ToDecimal(row.Cells[2].Value);
 
-            
-            
-            //decimal unitPrice = Convert.ToDecimal(row.Cells[this.dgvPODetail.Columns["ProductUnitPrice"].Index].Value);
-
-            //decimal qty = Convert.ToDecimal(row.Cells[this.dgvPODetail.Columns["ProductQTY"].Index].Value);
-
-            //row.Cells[this.dgvPODetail.Columns["ProductAmount"].Index].Value = unitPrice * qty;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -104,24 +86,27 @@ namespace PSI_System
 
             //BindingSource bs = (BindingSource)this.dgvPODetail.DataSource;
 
-            string pid = _manager.GetNewPID();
+            #region 建立資料表值參數的DataTable
             DataTable dt = new DataTable();
             dt.Columns.Add("PID");
             dt.Columns.Add("ID");
             dt.Columns.Add("QTY");
             dt.Columns.Add("Amount");
+            #endregion
 
+            #region 檢查輸入值並將值存入tvp
+            string pid = _manager.GetNewPID();
             int countNull = 0;
             for (int i = 0; i < countRows; i++)
             {
                 DataRow dr = dt.NewRow();
-                
+
                 var id = this.dgvPODetail.Rows[i].Cells[0].Value;
                 var qty = this.dgvPODetail.Rows[i].Cells[3].Value;
                 var amount = this.dgvPODetail.Rows[i].Cells[4].Value;
-                if (qty != null || Convert.ToDecimal(qty) != 0)
+                if (qty != null && Convert.ToDecimal(qty) != 0)
                 {
-                    dr["PID"] = (this.txtPID.Text == "儲存時建立")? pid : _model.PID;
+                    dr["PID"] = (this.txtPID.Text == "儲存時建立") ? pid : _model.PID;
                     dr["ID"] = id;
                     dr["QTY"] = qty;
                     dr["Amount"] = amount;
@@ -130,17 +115,17 @@ namespace PSI_System
                 else
                 {
                     countNull++;
-                    if(countNull == 4)
+                    if (countNull == 4)
                     {
                         MessageBox.Show("必須至少挑選一樣商品");
                         return;
                     }
-                    
                 }
-                
             }
+            #endregion
 
-            if(this.txtPID.Text == "儲存時建立")
+            #region 檢查是新增還是修改
+            if (this.txtPID.Text == "儲存時建立")
             {
                 _model.PID = pid;
                 _model.Items = int.Parse(this.txtItems.Text);
@@ -168,7 +153,8 @@ namespace PSI_System
 
                 MessageBox.Show("修改成功");
             }
-            
+            #endregion
+
         }
 
 
@@ -177,15 +163,19 @@ namespace PSI_System
             int items = 0;
             int qty = 0;
             decimal total = 0;
+
             for (int i = 0; i < this.dgvPODetail.Rows.Count; i++)
             {
-                if (this.dgvPODetail.Rows[i].Cells[3].Value != null)
+                if (this.dgvPODetail.Rows[i].Cells[3].Value != null && Convert.ToInt32(this.dgvPODetail.Rows[i].Cells[3].Value) != 0)
                 {
                     items++;
                     qty += Convert.ToInt32(this.dgvPODetail.Rows[i].Cells[3].Value);
                 }
                 if (this.dgvPODetail.Rows[i].Cells[4].Value != null)
+                {
                     total += Convert.ToDecimal(this.dgvPODetail.Rows[i].Cells[4].Value);
+                }
+                    
             }
 
             this.txtItems.Text = items.ToString();

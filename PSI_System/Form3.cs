@@ -50,7 +50,7 @@ namespace PSI_System
 
             if(Application.OpenForms.Count == 2)
             {
-                var result = MessageBox.Show($"已無其他表單，將關閉程式，您確定嗎?", "是否刪除", MessageBoxButtons.YesNo);
+                var result = MessageBox.Show($"已無其他表單，將關閉程式，您確定嗎?", "是否關閉", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     Environment.Exit(Environment.ExitCode);

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using PSI_System.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,5 +18,16 @@ namespace PSI_System
         {
             InitializeComponent();
         }
+
+        public DataTable dataTable_PO = null;
+
+        private void CrystalReportForm_Load(object sender, EventArgs e)
+        {
+            ReportDocument crp = new ReportDocument();
+            crp.Load("CrystalReport1.rpt");
+            crp.SetDataSource(dataTable_PO);
+            this.crystalReportViewer1.ReportSource = crp;
+        }
+
     }
 }

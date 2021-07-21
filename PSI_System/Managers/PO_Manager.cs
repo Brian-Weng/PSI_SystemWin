@@ -105,6 +105,19 @@ namespace PSI_System.Managers
             this.ExecuteNonQuery(dbCommandText, parameters);
         }
 
+        public DataTable GetPOTable()
+        {
+            string dbQuery =
+                @"SELECT * FROM PurchaseOrders
+                  WHERE Deleter IS NULL";
+
+            List<SqlParameter> dbParameters = new List<SqlParameter>();
+
+            var dt = this.GetDataTable(dbQuery, dbParameters);
+
+            return dt;
+        }
+
         public List<PO_Model> ReadPOs()
         {
             string dbQuery =

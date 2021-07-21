@@ -35,24 +35,24 @@ namespace PSI_System
             // 
             // crystalReportViewer1
             // 
-            this.crystalReportViewer1.ActiveViewIndex = 0;
+            this.crystalReportViewer1.ActiveViewIndex = -1;
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.ReportSource = this.CrystalReport11;
-            this.crystalReportViewer1.Size = new System.Drawing.Size(1193, 646);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(1238, 646);
             this.crystalReportViewer1.TabIndex = 0;
             // 
             // CrystalReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1193, 646);
+            this.ClientSize = new System.Drawing.Size(1238, 646);
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "CrystalReportForm";
             this.Text = "CrystalReportForm";
+            this.Load += new System.EventHandler(this.CrystalReportForm_Load);
             this.ResumeLayout(false);
 
         }
